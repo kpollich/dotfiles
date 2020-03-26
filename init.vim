@@ -14,6 +14,7 @@ Plug 'mhinz/vim-signify'
 Plug 'morhetz/gruvbox'
 Plug 'joshdick/onedark.vim'
 Plug 'arcticicestudio/nord-vim'
+Plug 'artanikin/vim-synthwave84'
 
 " Initialize plugin system
 call plug#end()
@@ -115,10 +116,10 @@ endfunction
 autocmd BufEnter * call SyncTree()
 
 " Move between buffers w/ leader + hjkl
-noremap <Leader>h :wincmd h<CR>
-noremap <Leader>j :wincmd j<CR>
-noremap <Leader>k :wincmd k<CR>
-noremap <Leader>l :wincmd l<CR>
+noremap <C-h> :wincmd h<CR>
+noremap <C-j> :wincmd j<CR>
+noremap <C-k> :wincmd k<CR>
+noremap <C-l> :wincmd l<CR>
 
 " jj = esc in insert mode
 inoremap jj <ESC>

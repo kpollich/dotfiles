@@ -1,3 +1,36 @@
+syntax on 
+
+set hidden
+set nobackup
+set nowritebackup
+set updatetime=300
+set shortmess+=c
+set signcolumn=yes
+set clipboard=unnamed
+set smarttab
+set cindent
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set colorcolumn=80
+set mouse=a
+set noshowmode
+set laststatus=2
+set nu
+set cursorline
+set showmatch
+set hlsearch
+set noswapfile
+set hidden 
+set updatetime=300
+set signcolumn=yes
+set incsearch
+set cmdheight=2
+
+" Error bell stuff
+set vb t_vb=
+set noerrorbells
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -10,42 +43,17 @@ Plug 'mileszs/ack.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mhinz/vim-signify'
+Plug 'HerringtonDarkholme/yats.vim'
 
 Plug 'morhetz/gruvbox'
-Plug 'joshdick/onedark.vim'
-Plug 'arcticicestudio/nord-vim'
-Plug 'artanikin/vim-synthwave84'
 
 " Initialize plugin system
 call plug#end()
 
-set clipboard=unnamed
-set smarttab
-set cindent
-set tabstop=2
-set shiftwidth=2
-set expandtab
-set colorcolumn=100
-set mouse=a
-set noshowmode
-set laststatus=2
-
-" Error bell stuff
-set vb t_vb=
-set noerrorbells
-
+colorscheme gruvbox
 set background=dark
 set termguicolors
-set number
-set cursorline
-set showmatch
-set hlsearch
-set noswapfile
-set hidden 
-set updatetime=300
-set signcolumn=yes
-
-colorscheme gruvbox
+set t_Co=256
 let g:airline_theme='gruvbox'
 
 " Map Leader to space
@@ -116,10 +124,10 @@ endfunction
 autocmd BufEnter * call SyncTree()
 
 " Move between buffers w/ leader + hjkl
-noremap <C-h> :wincmd h<CR>
-noremap <C-j> :wincmd j<CR>
-noremap <C-k> :wincmd k<CR>
-noremap <C-l> :wincmd l<CR>
+noremap <leader>h :wincmd h<CR>
+noremap <leader>j :wincmd j<CR>
+noremap <leader>k :wincmd k<CR>
+noremap <leader>l :wincmd l<CR>
 
 " jj = esc in insert mode
 inoremap jj <ESC>
@@ -140,23 +148,6 @@ let g:coc_global_extensions = [
   \ 'coc-json', 
 \ ]
 
-" TextEdit might fail if hidden is not set.
-set hidden
-
-" Some servers have issues with backup files, see #649.
-set nobackup
-set nowritebackup
-
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=300
-
-" Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
-
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-set signcolumn=yes
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by

@@ -6,7 +6,7 @@ set nowritebackup
 set updatetime=300
 set shortmess+=c
 set signcolumn=yes
-set clipboard=unnamed
+set clipboard=unnamedplus
 set smarttab
 set cindent
 set tabstop=2
@@ -19,6 +19,7 @@ set laststatus=2
 set nu
 set cursorline
 set showmatch
+set ignorecase
 set hlsearch
 set noswapfile
 set hidden 
@@ -40,21 +41,24 @@ Plug 'leafgarland/typescript-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
 Plug 'mhinz/vim-signify'
 Plug 'HerringtonDarkholme/yats.vim'
 
 Plug 'morhetz/gruvbox'
+Plug 'joshdick/onedark.vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 " Initialize plugin system
 call plug#end()
 
-colorscheme gruvbox
 set background=dark
 set termguicolors
 set t_Co=256
-let g:airline_theme='gruvbox'
+colorscheme gruvbox
+
+let g:lightline = {}
+let g:lightline.colorscheme = 'gruvbox'
 
 " Map Leader to space
 let mapleader = ' '
@@ -124,13 +128,10 @@ endfunction
 autocmd BufEnter * call SyncTree()
 
 " Move between buffers w/ leader + hjkl
-noremap <leader>h :wincmd h<CR>
-noremap <leader>j :wincmd j<CR>
-noremap <leader>k :wincmd k<CR>
-noremap <leader>l :wincmd l<CR>
-
-" jj = esc in insert mode
-inoremap jj <ESC>
+nmap <leader>h :wincmd h<CR>
+nmap <leader>j :wincmd j<CR>
+nmap <leader>k :wincmd k<CR>
+nmap <leader>l :wincmd l<CR>
 
 " space+n to remove search highlights
 nnoremap <Leader>n :noh<CR>
@@ -253,19 +254,19 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings using CoCList:
 " Show all diagnostics.
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
 " Show commands.
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document.
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
 " Search workspace symbols.
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+" nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " End COC Config

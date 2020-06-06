@@ -1,57 +1,51 @@
 syntax on 
 
+set relativenumber
 set hidden
-set nobackup
-set nowritebackup
-set updatetime=300
-set shortmess+=c
-set signcolumn=yes
-set clipboard=unnamedplus
-set smarttab
-set cindent
-set tabstop=2
+set noerrorbells
+set tabstop=2 softtabstop=2
 set shiftwidth=2
 set expandtab
-set colorcolumn=80
-set mouse=a
-set noshowmode
-set laststatus=2
+set smartindent
+set smarttab
 set nu
-set cursorline
-set showmatch
-set ignorecase
-set hlsearch
+set nowrap
+set smartcase
 set noswapfile
-set hidden 
-set updatetime=300
+set nobackup
+set undodir=~/.vim/undodir
+set undofile
+set incsearch
+set termguicolors
+set scrolloff=8
+set nofixendofline
+set mouse=a
 set signcolumn=yes
 set incsearch
-set cmdheight=2
-
-" Error bell stuff
-set vb t_vb=
-set noerrorbells
+set clipboard=unnamedplus
+set cursorline
+set laststatus=2
+set noshowmode
 
 call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
-Plug 'leafgarland/typescript-vim'
+Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'mileszs/ack.vim'
+Plug 'sheerun/vim-polyglot'
 Plug 'itchyny/lightline.vim'
 Plug 'mhinz/vim-signify'
-Plug 'HerringtonDarkholme/yats.vim'
+Plug 'sheerun/vim-polyglot'
 
-Plug 'morhetz/gruvbox'
-Plug 'joshdick/onedark.vim'
-Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'gruvbox-community/gruvbox'
 
 " Initialize plugin system
 call plug#end()
 
+let g:gruvbox_contrast_dark = 'hard'
 set background=dark
 set termguicolors
 set t_Co=256
@@ -63,17 +57,11 @@ let g:lightline.colorscheme = 'gruvbox'
 " Map Leader to space
 let mapleader = ' '
 
-" Ack.vim
-cnoreabbrev ag Ack -Q
-cnoreabbrev aG Ack -Q
-cnoreabbrev Ag Ack -Q
-cnoreabbrev AG Ack -Q
-cnoreabbrev F Ack -Q
-cnoreabbrev f Ack -Q
+nnoremap <Leader>ps :Rg<SPACE>
 
-" Make sure to `brew install the_silver_searcher`
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep --smart-case'
+" ripgrep 
+if executable('rg')
+  let g:rg_derive_root='true'
 endif
 
 " FZF

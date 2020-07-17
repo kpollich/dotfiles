@@ -30,12 +30,11 @@ set noshowmode
 call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/nerdcommenter'
+Plug 'preservim/nerdtree'
+Plug 'preservim/nerdcommenter'
 Plug 'itchyny/lightline.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'sheerun/vim-polyglot'
 Plug 'itchyny/lightline.vim'
 Plug 'mhinz/vim-signify'
 Plug 'sheerun/vim-polyglot'
@@ -45,7 +44,10 @@ Plug 'gruvbox-community/gruvbox'
 " Initialize plugin system
 call plug#end()
 
+set encoding=UTF-8
+
 let g:gruvbox_contrast_dark = 'hard'
+
 set background=dark
 set termguicolors
 set t_Co=256
@@ -57,15 +59,11 @@ let g:lightline.colorscheme = 'gruvbox'
 " Map Leader to space
 let mapleader = ' '
 
+" Project search w/ ripgrep
 nnoremap <Leader>ps :Rg<SPACE>
 
-" ripgrep 
-if executable('rg')
-  let g:rg_derive_root='true'
-endif
-
-" FZF
-let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+" Wrapper to ensure fzf files don't open in the Nerd Tree buffer when it's
+" open
 function! FZFOpen(command_str)
   if (expand('%') =~# 'NERD_tree' && winnr('$') > 1)
     exe "normal! \<c-w>\<c-w>"
@@ -115,11 +113,16 @@ endfunction
 " Highlight currently open buffer in NERDTree
 autocmd BufEnter * call SyncTree()
 
+
 " Move between buffers w/ leader + hjkl
 nmap <leader>h :wincmd h<CR>
 nmap <leader>j :wincmd j<CR>
 nmap <leader>k :wincmd k<CR>
 nmap <leader>l :wincmd l<CR>
+
+" Resize
+nnoremap <Leader>+ :vertical resize +5<CR>
+nnoremap <Leader>- :vertical resize -5<CR>
 
 " space+n to remove search highlights
 nnoremap <Leader>n :noh<CR>

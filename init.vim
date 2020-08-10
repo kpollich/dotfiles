@@ -38,23 +38,23 @@ Plug 'junegunn/fzf.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'mhinz/vim-signify'
 Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-surround'
 
-Plug 'gruvbox-community/gruvbox'
+Plug 'rakr/vim-one'
 
 " Initialize plugin system
 call plug#end()
 
 set encoding=UTF-8
 
-let g:gruvbox_contrast_dark = 'hard'
-
 set background=dark
 set termguicolors
 set t_Co=256
-colorscheme gruvbox
+colorscheme one
 
 let g:lightline = {}
-let g:lightline.colorscheme = 'gruvbox'
+let g:lightline.colorscheme = 'one'
+let g:one_allow_italics = 1
 
 " Map Leader to space
 let mapleader = ' '

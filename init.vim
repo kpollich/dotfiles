@@ -40,7 +40,7 @@ Plug 'mhinz/vim-signify'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-surround'
 
-Plug 'joshdick/onedark.vim'
+Plug 'rakr/vim-one'
 
 " Initialize plugin system
 call plug#end()
@@ -50,10 +50,12 @@ set encoding=UTF-8
 set background=dark
 set termguicolors
 set t_Co=256
-colorscheme onedark
+let g:one_allow_italics = 1
+
+colorscheme one
 
 let g:lightline = {}
-let g:lightline.colorscheme = 'onedark'
+let g:lightline.colorscheme = 'one'
 
 " Map Leader to space
 let mapleader = ' '

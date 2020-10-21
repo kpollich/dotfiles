@@ -41,6 +41,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-surround'
 
 Plug 'rakr/vim-one'
+Plug 'gruvbox-community/gruvbox'
 
 " Initialize plugin system
 call plug#end()
@@ -50,8 +51,9 @@ set encoding=UTF-8
 set background=dark
 set termguicolors
 set t_Co=256
-let g:one_allow_italics = 1
 
+let g:gruvbox_contrast_dark = 'hard'
+let g:one_allow_italics = 1
 colorscheme one
 
 let g:lightline = {}
